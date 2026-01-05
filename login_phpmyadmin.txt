@@ -1,0 +1,3 @@
+server: db (service's name for mariadb in docker-compose.yml)
+username: MARIADB_USER (or root)
+password: MARIADB_PASSWORD (or MARIADB_ROOT_PASSWORD)

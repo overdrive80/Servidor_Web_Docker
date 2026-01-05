@@ -1,0 +1,39 @@
+services:
+  nginx:
+    image: nginx:latest
+    working_dir: '/var/www/html'
+    volumes:
+      - ./htdocs:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 29000:80
+    restart: always
+    
+  php:
+    build: ./php
+    volumes:
+      - ./htdocs:/var/www/html
+
+  db:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - database-data:/var/lib/mysql
+    ports:
+      - 29003:3306   
+    restart: always
+    
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 29005:80
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  database-data: {}
