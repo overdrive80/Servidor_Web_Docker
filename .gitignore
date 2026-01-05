@@ -1,2 +1,5 @@
+# Ignorar todas las carpetas dentro de htdocs (proyectos)
+htdocs/*/
+
 !htdocs/index.php
 !htdocs/styles.css
