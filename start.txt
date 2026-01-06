@@ -1,4 +1,26 @@
-docker compose up -d --build
+Construir contenedores:
+    docker compose up -d --build
+
+Para reconstruirlos sin cerrarlos:
+    docker compose up -d --build --force-recreate
 
 Para cerrar servicios:
-docker compose down
+    docker compose down
+
+Ademas borra los volumenes asociados:
+    docker compose down -v
+	
+Filtrar contenedor por volumen:
+    docker ps -a --filter volume="nombre_volumen"
+	
+Eliminar contenedor:
+    docker rm -f <CONTAINER_ID>
+	
+Eliminar volumen:
+    docker volume rm nombre_volumen
+	
+Eliminar imagenes:
+	docker rmi nginx:latest
+	docker rmi phpmyadmin:latest
+	docker rmi mariadb:latest
+
